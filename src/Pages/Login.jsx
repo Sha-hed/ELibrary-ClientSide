@@ -1,20 +1,31 @@
-
+import { FcGoogle } from "react-icons/fc";
 import { useForm } from 'react-hook-form';
 import yaa from '../assets/images/Login.jpg';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const Login = () => {
+
+    const { login, google } = useAuth();
+
     const { register, handleSubmit, resetField, formState: { errors } } = useForm({
 
     });
-    console.log(errors.Email)
     const onSubmit = data => {
         const email = data.Email;
         const password = data.Password;
         resetField("Email")
         resetField("Password")
-        const user = { email, password };
-        console.log(user);
+        // const user = { email, password };
+        // console.log(user);
+        login(email, password)
+            .then(result => console.log(result.user))
+            .catch(error => console.log(error.messaged))
+    }
+    const googleLogin = () => {
+        google()
+            .then(result => console.log(result.user))
+            .catch(error => console.log(error.message))
     }
     return (
         <div className="max-w-6xl mx-auto my-10 p-2">
@@ -38,7 +49,7 @@ const Login = () => {
 
                         <input className='btn btn-primary w-full' type="submit" value='Login' />
                     </form>
-                    <button className='btn btn-secondary w-full my-3'>Login With Google</button>
+                    <button onClick={googleLogin} className='btn btn-info w-full my-3'><FcGoogle className="text-2xl" />Login With Google</button>
                     <p className='text-xl font-semibold gap-0 text-center'>New to this Website ? Please <Link className=' text-xl btn btn-link' to='/register'>Register</Link></p>
                 </div>
             </div>
