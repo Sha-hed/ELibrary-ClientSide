@@ -47,7 +47,7 @@ const Login = () => {
                             placeholder="Password"
                             {...register("Password", { required: true })} />
 
-                        <input className='btn btn-primary w-full' type="submit" value='Login' />
+                        <input className='btn btn-info w-full' type="submit" value='Login' />
                     </form>
                     <button onClick={googleLogin} className='btn btn-info w-full my-3'><FcGoogle className="text-2xl" />Login With Google</button>
                     <p className='text-xl font-semibold gap-0 text-center'>New to this Website ? Please <Link className=' text-xl btn btn-link' to='/register'>Register</Link></p>

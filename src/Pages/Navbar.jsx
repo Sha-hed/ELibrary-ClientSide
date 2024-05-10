@@ -4,10 +4,10 @@ const Navbar = () => {
 
 
     const links =<>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/allBooks'>AllBooks</NavLink></li>
-    <li><NavLink to='/borrowedBook'>BorrowedBooks</NavLink></li>
-    <li><NavLink to='/addBook'>AddBook</NavLink></li>
+    <li className='text-lg font-semibold' ><NavLink to='/'>Home</NavLink></li>
+    <li className='text-lg font-semibold' ><NavLink to='/allBooks'>AllBooks</NavLink></li>
+    <li className='text-lg font-semibold' ><NavLink to='/borrowedBook'>BorrowedBooks</NavLink></li>
+    <li className='text-lg font-semibold' ><NavLink to='/addBook'>AddBook</NavLink></li>
     </>
 
     return (
