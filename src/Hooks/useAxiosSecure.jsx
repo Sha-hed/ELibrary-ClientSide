@@ -6,7 +6,7 @@ const axiousSecure = axios.create({
 })
 
 const useAxiosSecure = () => {
-    return axiousSecure;
+  return axiousSecure;
 };
 
 export default useAxiosSecure;

@@ -12,10 +12,10 @@ const Register = () => {
         const photo = data.Photo;
         const email = data.Email;
         const password = data.Password;
-        resetField("Email")
-        resetField("Password")
-        resetField("Name")
-        resetField("Photo")
+        // resetField("Email")
+        // resetField("Password")
+        // resetField("Name")
+        // resetField("Photo")
         // const user = {name, photo, email, password };
         // console.log(user);
         createUser(email,password)

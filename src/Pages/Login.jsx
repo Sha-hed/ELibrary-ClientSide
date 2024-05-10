@@ -14,8 +14,8 @@ const Login = () => {
     const onSubmit = data => {
         const email = data.Email;
         const password = data.Password;
-        resetField("Email")
-        resetField("Password")
+        // resetField("Email")
+        // resetField("Password")
         // const user = { email, password };
         // console.log(user);
         login(email, password)
