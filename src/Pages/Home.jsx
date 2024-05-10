@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
 import img1 from '../assets/images/img1.jpg';
 import img2 from '../assets/images/img2.jpg';
 import img3 from '../assets/images/img3.jpg';
+import axios from 'axios';
+import { useState } from 'react';
+import CategoryCard from '../Components/CategoryCard';
 
 const Home = () => {
+    const [category, setCategory] = useState([]);
+    useEffect(()=>{
+        axios.get('http://localhost:5000/cat')
+        .then(data=>setCategory(data.data));
+        
+    },[])
 
     return (
         <>
@@ -29,9 +39,14 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        <h1 className='text-4xl font-bold text-center  my-10'>Books Categories</h1>
         
+        <div className='max-w-6xl mx-auto gap-y-5 grid grid-cols-2'>
+            {
+                category.map(cat=><CategoryCard cat={cat} key={cat._id}></CategoryCard>)
+            }
+        </div>
         </>
-        
 
     );
 };
