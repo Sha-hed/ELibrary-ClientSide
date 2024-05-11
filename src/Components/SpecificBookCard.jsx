@@ -1,6 +1,7 @@
 import Rating from "react-rating";
+import { Link } from "react-router-dom";
 const SpecificBookCard = ({ book }) => {
-    const { sd, author_name, book_name, category, email, photoURL, quantity, rating } = book;
+    const { sd, _id,  author_name, book_name, category, email, photoURL, quantity, rating } = book;
     return (
         <div className="card w-96 bg-gray-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -15,7 +16,7 @@ const SpecificBookCard = ({ book }) => {
                     readonly
                 /></h2>
                 <div className="card-actions ">
-                    <button className="btn btn-primary">View Details</button>
+                    <Link to={`/bookDetails/${_id}`} className="btn btn-primary">View Details</Link>
                 </div>
             </div>
         </div>
