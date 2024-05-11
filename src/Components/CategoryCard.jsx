@@ -8,7 +8,7 @@ const CategoryCard = ({cat}) => {
                 <div className="space-y-2">
                     <img src={cat.image} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
                 </div>
-                <Link to='/' className="btn btn-secondary w-full">View {cat.category} Books</Link>
+                <Link to={`/specific/${cat.category}`} className="btn btn-secondary w-full">View {cat.category} Books</Link>
             </div>
         </div>
     );
