@@ -9,24 +9,24 @@ const AllBooks = () => {
     const [grid, setGrid] = useState(true);
     const [list, setList] = useState(false);
 
-    const handleGridClick = () => {
-        setGrid(true)
-        setList(false);
-    }
-    const handleListClick = () => {
-        setGrid(false)
-        setList(true);
-    }
+    // const handleGridClick = () => {
+    //     setGrid(true)
+    //     setList(false);
+    // }
+    // const handleListClick = () => {
+    //     setGrid(false)
+    //     setList(true);
+    // }
 
 
     const [books, setBooks] = useState([]);
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/books')
-    //         .then(data => {
-    //             console.log(data.data);
-    //             setBooks(data.data)
-    //         })
-    // }, [])
+    useEffect(() => {
+        axios.get('http://localhost:5000/books')
+            .then(data => {
+                console.log(data.data);
+                setBooks(data.data)
+            })
+    }, [])
 
     const buttonCalled = () => {
         // 
