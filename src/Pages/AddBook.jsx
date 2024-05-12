@@ -11,8 +11,8 @@ const AddBook = () => {
         const photoURL = data.image
         const author_name = data.Author_Name;
         const category = data.Category;
-        const rating = data.Rating;
-        const quantity = data.Quantity;
+        const rating = parseInt(data.Rating);
+        const quantity = parseInt(data.Quantity);
         const sd = data.sd;
         const email = user.email;
         const bookInfo = {
