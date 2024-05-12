@@ -20,22 +20,22 @@ const AllBooks = () => {
 
 
     const [books, setBooks] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:5000/books')
-            .then(data => {
-                console.log(data.data);
-                setBooks(data.data)
-            })
-    }, [])
-
-    // const buttonCalled = () => {
-    //     // 
-    //     axios.get('http://localhost:5000/quan')
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/books')
     //         .then(data => {
     //             console.log(data.data);
     //             setBooks(data.data)
     //         })
-    // }
+    // }, [])
+
+    const buttonCalled = () => {
+        // 
+        axios.get('http://localhost:5000/quan')
+            .then(data => {
+                console.log(data.data);
+                setBooks(data.data)
+            })
+    }
 
     return (
         <div className="max-w-6xl mx-auto my-10">
