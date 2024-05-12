@@ -35,14 +35,14 @@ const BorrowedBooks = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        {/* <tr>
+                        <tr>
                             <th className='font-bold text-red-600 text-xl'>Image</th>
                             <th className='font-bold text-red-600 text-xl'>BookName</th>
                             <th className='font-bold text-red-600 text-xl'>Category</th>
                             <th className='font-bold text-red-600 text-xl'>Borrowed Date</th>
                             <th className='font-bold text-red-600 text-xl'>Return Date</th>
                             <th className='font-bold text-red-600 text-xl'>Action</th>
-                        </tr> */}
+                        </tr>
                     </thead>
                     <tbody>
                         {
