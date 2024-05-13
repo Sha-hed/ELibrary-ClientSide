@@ -1,30 +1,44 @@
 import { useForm } from 'react-hook-form';
 import yaa from '../assets/images/Login.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import { updateProfile } from 'firebase/auth';
 import auth from '../Firebase/firebase.config';
+import Swal from 'sweetalert2';
 const Register = () => {
-    const { register, handleSubmit, resetField, formState: { errors } } = useForm({});
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2200,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm({});
     const { createUser } = useAuth()
     const onSubmit = data => {
         const name = data.Name;
         const photo = data.Photo;
         const email = data.Email;
         const password = data.Password;
-        // resetField("Email")
-        // resetField("Password")
-        // resetField("Name")
-        // resetField("Photo")
-        // const user = {name, photo, email, password };
-        // console.log(user);
-        createUser(email,password)
+        createUser(email, password)
             .then(() => {
                 updateProfile(auth.currentUser, {
-                    displayName: name, 
+                    displayName: name,
                     photoURL: photo
                 }).then(() => {
                     console.log('Profile Update Successfully At Register Page! Yahu')
+                    Toast.fire({
+                        icon: "success",
+                        title: "Registered successfully"
+                    });
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 2500)
                 }).catch((error) => {
                     console.log('We got a error man', error)
                     // An error occurred

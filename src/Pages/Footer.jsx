@@ -10,7 +10,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <p className="font-bold">
-                    ACME Industries Ltd. <br />Providing reliable tech since 1992
+                    EBooks
                 </p>
                 <p>Copyright © 2024 - All right reserved</p>
             </aside>

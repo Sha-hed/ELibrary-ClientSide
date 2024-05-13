@@ -2,7 +2,6 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '../assets/images/Logo.png';
 import useAuth from '../Hooks/useAuth';
 import { useEffect, useState } from 'react';
-import { doc } from 'firebase/firestore';
 const Navbar = () => {
 
     const { user, logout } = useAuth()
@@ -26,18 +25,18 @@ const Navbar = () => {
             .catch(error => console.log(error.message))
     }
 
-    const handleTheme =e=>{
+    const handleTheme = e => {
         console.log(e.target.checked);
-        if(e.target.checked){
+        if (e.target.checked) {
             setTheme("dark")
-        }else{
+        } else {
             setTheme("fantasy")
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', theme)
-    },[theme])
+    }, [theme])
 
     return (
         <div className="navbar bg-base-100 shadow-xl">
@@ -56,7 +55,7 @@ const Navbar = () => {
                             <img src={Logo} alt="" />
                         </div>
                     </div>
-                    <a className="btn btn-ghost text-xl">Books</a>
+                    <a className="btn btn-ghost text-xl">EBooks</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -68,7 +67,11 @@ const Navbar = () => {
                 {
                     user ?
                         <>
-                            <p className='mr-2'>{user.email}</p>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3" title={user.displayName}>
+                                <div className="w-10 rounded-full">
+                                    <img src={user.photoURL} />
+                                </div>
+                            </div>
                             <button onClick={handleLogOut} className='btn btn-error'>LogOut</button>
                         </> : <Link to='/login' className="btn btn-accent">Login</Link>
                 }
