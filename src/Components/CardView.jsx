@@ -18,7 +18,7 @@ const CardView = ({ book }) => {
                     readonly
                 /></h2>
                 <div className="card-actions ">
-                    <Link to={`/bookDetails/${_id}`} className="btn btn-primary">Update Book</Link>
+                    <Link to={`/updateDetails/${_id}`} className="btn btn-primary">Update Book</Link>
                 </div>
             </div>
         </div>

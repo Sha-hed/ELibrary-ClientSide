@@ -9,14 +9,14 @@ const AllBooks = () => {
     const [grid, setGrid] = useState(true);
     const [list, setList] = useState(false);
 
-    // const handleGridClick = () => {
-    //     setGrid(true)
-    //     setList(false);
-    // }
-    // const handleListClick = () => {
-    //     setGrid(false)
-    //     setList(true);
-    // }
+    const handleGridClick = () => {
+        setGrid(true)
+        setList(false);
+    }
+    const handleListClick = () => {
+        setGrid(false)
+        setList(true);
+    }
 
 
     const [books, setBooks] = useState([]);

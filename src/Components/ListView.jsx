@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ListView = ({ book }) => {
@@ -14,7 +15,7 @@ const ListView = ({ book }) => {
             <td className='font-bold text-lg'>{book.author_name}</td>
             <td className='font-bold text-lg'>{book.category}</td>
             <td className='font-bold text-lg'>{book.sd}</td>
-            <td className='font-bold text-lg'><button className='btn btn-primary'>Update Book</button></td>
+            <td className='font-bold text-lg'><Link to={`/updateDetails/${book._id}`} className='btn btn-primary'>Update Book</Link></td>
         </tr>
     );
 };
