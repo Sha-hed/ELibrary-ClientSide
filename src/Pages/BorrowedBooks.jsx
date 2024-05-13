@@ -2,18 +2,21 @@ import { useEffect, useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const BorrowedBooks = () => {
-
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
     const [books, setBooks] = useState(null);
+    const url = `/borrowedBooks?email=${user?.email}`;
+    // const url = `http://localhost:5000/borrowedBooks?email=${user?.email}`;
     useEffect(() => {
-        axios.get(`http://localhost:5000/borrowedBooks?email=${user?.email}`)
+        axiosSecure.get(url)
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
             })
-    }, [])
+    }, [url, axiosSecure])
 
     const handleReturn = (book) => {
         const returnId = book._id;
@@ -30,7 +33,6 @@ const BorrowedBooks = () => {
     }
     return (
         <div className='max-w-7xl mx-auto'>
-
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -64,10 +66,7 @@ const BorrowedBooks = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
-
-
     );
 };
 

@@ -55,7 +55,7 @@ const Navbar = () => {
                             <img src={Logo} alt="" />
                         </div>
                     </div>
-                    <a className="btn btn-ghost text-xl">EBooks</a>
+                    <a className="btn btn-ghost text-xl">ELibrary</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

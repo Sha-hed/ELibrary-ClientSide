@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const AddBook = () => {
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const book_name = data.Name
@@ -18,15 +19,16 @@ const AddBook = () => {
         const bookInfo = {
             book_name, photoURL, author_name, category, rating, quantity, sd, email
         }
-        axios.post('http://localhost:5000/add',bookInfo)
-        .then(data=>{
-            if(data.data.insertedId){
-                Swal.fire({
-                    title: "Book is added Successfully",
-                    icon: "success"
-                  });
-            }
-            console.log(data.data)})
+        axiosSecure.post('/add', bookInfo)
+            .then(data => {
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        title: "Book is added Successfully",
+                        icon: "success"
+                    });
+                }
+                console.log(data.data)
+            })
     };
     console.log(errors)
     return (

@@ -21,7 +21,7 @@ const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/books')
+        axios.get('http://localhost:5000/books',{withCredentials:true})
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
