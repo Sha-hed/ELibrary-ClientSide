@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SpecificBookCard = ({ book }) => {
     const { sd, _id,  author_name, book_name, category, email, photoURL, quantity, rating } = book;
     return (
-        <div className="card w-96 bg-gray-100 shadow-xl">
+        <div className="card w-full md:w-96 bg-gray-100 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={photoURL} alt="Shoes" className="rounded-xl h-[100px]" />
             </figure>

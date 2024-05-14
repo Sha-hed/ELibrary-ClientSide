@@ -7,51 +7,49 @@ import axios from "axios";
 
 export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const GoogleProvider = new GoogleAuthProvider()
-    const createUser =(email,password)=>{
+    const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const login = (email,password)=>{
+    const login = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const logout =()=>{
+    const logout = () => {
         setLoading(true);
         return signOut(auth)
     }
 
-    const google =()=>{
+    const google = () => {
         setLoading(true);
-        return signInWithPopup(auth,GoogleProvider);
+        return signInWithPopup(auth, GoogleProvider);
     }
-    
-    useEffect(()=>{
-        const unsubscribe =onAuthStateChanged(auth, currentUser=>{
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail};
+            const loggedUser = { email: userEmail };
             console.log(currentUser);
             setUser(currentUser);
             setLoading(false);
-            if(currentUser){
-                axios.post(`http://localhost:5000/jwt`, loggedUser, {withCredentials:true})
-                .then(data=>console.log(data));
-            }else{
-                
+            if (currentUser) {
+                axios.post(`https://assignment-11-server-side-red.vercel.app/jwt`, loggedUser, { withCredentials: true })
+                    .then(data => console.log(data));
             }
         })
-        return ()=>{
+        return () => {
             unsubscribe()
         }
-    },[])
+    }, [])
 
 
-    const authInfo={
+    const authInfo = {
         user,
         loading,
         createUser,
@@ -59,7 +57,7 @@ const AuthProvider = ({children}) => {
         logout,
         google
     }
-       
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

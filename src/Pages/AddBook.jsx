@@ -37,11 +37,11 @@ const AddBook = () => {
                 <div className='flex gap-5 w-full'>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor="">Book Name</label><br />
-                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Name" {...register("Name", { required: true })} />
+                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Book Name" {...register("Name", { required: true })} />
                     </div>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor="">Book Image</label><br />
-                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="image" {...register("image", { required: true })} />
+                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Enter image URL" {...register("image", { required: true })} />
                     </div>
                 </div>
                 <div className='flex gap-5 w-full'>

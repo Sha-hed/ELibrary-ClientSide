@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const UpdateBooks = () => {
     const book = useLoaderData();
     console.log(book);
-    const { sd, _id,  author_name, book_name, category, email, photoURL, quantity, rating } = book;
+    const { sd, _id, author_name, book_name, category, email, photoURL, quantity, rating } = book;
     const { user } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -18,8 +18,9 @@ const UpdateBooks = () => {
         const category = data.Category;
         const rating = parseInt(data.Rating);
         const bookInfo = {
-            book_name, photoURL, author_name, category, rating}
-        axios.patch(`http://localhost:5000/UpdateBooks/${_id}`, bookInfo)
+            book_name, photoURL, author_name, category, rating
+        }
+        axios.patch(`https://assignment-11-server-side-red.vercel.app/UpdateBooks/${_id}`, bookInfo)
             .then(data => {
                 if (data.data.modifiedCount) {
                     Swal.fire({

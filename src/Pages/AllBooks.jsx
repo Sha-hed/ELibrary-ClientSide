@@ -21,7 +21,7 @@ const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/books',{withCredentials:true})
+        axios.get('https://assignment-11-server-side-red.vercel.app/books', { withCredentials: true })
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -30,7 +30,7 @@ const AllBooks = () => {
 
     const buttonCalled = () => {
         // 
-        axios.get('http://localhost:5000/quan')
+        axios.get('https://assignment-11-server-side-red.vercel.app/quan')
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -52,7 +52,7 @@ const AllBooks = () => {
                 </div>
             </div>
             {
-                grid && (<div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                grid && (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
                         books?.map(book => <CardView book={book} key={book._id}></CardView>)
                     }

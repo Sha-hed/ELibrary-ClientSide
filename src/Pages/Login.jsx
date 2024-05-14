@@ -70,11 +70,11 @@ const Login = () => {
     return (
         <div className="max-w-6xl mx-auto my-10 p-2">
             <h1 className='text-center font-bold text-2xl underline mb-5'>Login Now</h1>
-            <div className=' flex justify-between'>
-                <div className='w-1/2'>
+            <div className=' flex flex-col md:flex-row justify-between'>
+                <div className='w-1/2 mx-auto'>
                     <img src={yaa} alt="" />
                 </div>
-                <div className='w-1/2'>
+                <div className='w-full md:w-1/2'>
 
                     <form className='space-y-4' onSubmit={handleSubmit(onSubmit)}>
                         <label className='font-bold text-xl mb-3' htmlFor="">Email</label><br />

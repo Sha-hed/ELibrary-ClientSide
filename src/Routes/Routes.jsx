@@ -33,11 +33,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addBook',
-                element:<PrivateRoute><AddBook></AddBook></PrivateRoute>
+                element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
             },
             {
                 path: '/borrowedBook',
-                element:<PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
+                element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
             },
             {
                 path: '/allBooks',
@@ -46,25 +46,25 @@ export const router = createBrowserRouter([
             {
                 path: '/specific/:category',
                 element: <SpecificCategory></SpecificCategory>,
-                loader: ({params})=>fetch(`http://localhost:5000/books/${params.category}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/books/${params.category}`)
             },
             {
                 path: '/bookDetails/:id',
                 element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/singleBook/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/singleBook/${params.id}`)
             },
             {
                 path: '/b',
-                element:<PrivateRoute><BorrowPage></BorrowPage></PrivateRoute>
+                element: <PrivateRoute><BorrowPage></BorrowPage></PrivateRoute>
             },
             {
                 path: '/test',
-                element:<Test></Test>
+                element: <Test></Test>
             },
             {
                 path: '/updateDetails/:id',
                 element: <PrivateRoute><UpdateBooks></UpdateBooks></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/singleBook/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/singleBook/${params.id}`)
             }
         ]
     },

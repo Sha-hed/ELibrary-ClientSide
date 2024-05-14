@@ -51,11 +51,11 @@ const Register = () => {
     return (
         <div className="max-w-6xl mx-auto my-10 p-2">
             <h1 className='text-center font-bold text-2xl underline mb-5'>Register Now</h1>
-            <div className='flex justify-between items-center'>
+            <div className='flex flex-col md:flex-row justify-between items-center'>
                 <div className='w-1/2'>
                     <img src={yaa} alt="" />
                 </div>
-                <div className='w-1/2'>
+                <div className='w-full md:w-1/2'>
                     <form className='space-y-4' onSubmit={handleSubmit(onSubmit)}>
                         <label className='font-bold text-xl mb-3' htmlFor="">Your Name</label><br />
                         <input type="text" placeholder="Name"
@@ -91,10 +91,13 @@ const Register = () => {
                             placeholder="Password"
                             {...register("Password",
                                 {
-                                    required: true,
+                                    required:{
+                                      value: true,
+                                      message: 'Please Provide a valid password'
+                                    },
                                     pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
-                                        message: 'Password must contain at least one uppercase letter and one lowercase letter.'
+                                        value: /^(?=.*[A-Z])(?=.*[\W_]).+$/,
+                                        message: 'Passwords should include at least one uppercase letter and one special character.'
                                     },
                                     minLength: {
                                         value: 6,

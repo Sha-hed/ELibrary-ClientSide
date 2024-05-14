@@ -8,8 +8,9 @@ const BorrowedBooks = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
     const [books, setBooks] = useState(null);
+
     const url = `/borrowedBooks?email=${user?.email}`;
-    // const url = `http://localhost:5000/borrowedBooks?email=${user?.email}`;
+    // const url = `https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`;
     useEffect(() => {
         axiosSecure.get(url)
             .then(data => {
@@ -17,55 +18,58 @@ const BorrowedBooks = () => {
                 setBooks(data.data)
             })
     }, [url, axiosSecure])
-
     const handleReturn = (book) => {
         const returnId = book._id;
         const allBookId = book.book._id;
-        axios.delete(`http://localhost:5000/returnBook/${returnId}`)
+        axios.delete(`https://assignment-11-server-side-red.vercel.app/returnBook/${returnId}`)
             .then(data => {
                 const remaining = books.filter(b => b._id !== returnId);
                 setBooks(remaining);
                 Swal.fire("The book is returned");
                 console.log(data.data)
             })
-        axios.patch(`http://localhost:5000/returnQuantity/${allBookId}`)
+        axios.patch(`https://assignment-11-server-side-red.vercel.app/returnQuantity/${allBookId}`)
             .then(data => { console.log(data.data) })
     }
+
+
     return (
-        <div className='max-w-7xl mx-auto'>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th className='font-bold text-red-600 text-xl'>Image</th>
-                            <th className='font-bold text-red-600 text-xl'>BookName</th>
-                            <th className='font-bold text-red-600 text-xl'>Category</th>
-                            <th className='font-bold text-red-600 text-xl'>Borrowed Date</th>
-                            <th className='font-bold text-red-600 text-xl'>Return Date</th>
-                            <th className='font-bold text-red-600 text-xl'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            books?.map(book => <tr key={book._d}>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="w-24 rounded">
-                                            <img src={book.book.photoURL} />
+        <div className='max-w-7xl mx-auto min-h-[calc(100vh-260px)]'>
+            {
+                books?.length ? (<div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th className='font-bold text-red-600 text-xl'>Image</th>
+                                <th className='font-bold text-red-600 text-xl'>BookName</th>
+                                <th className='font-bold text-red-600 text-xl'>Category</th>
+                                <th className='font-bold text-red-600 text-xl'>Borrowed Date</th>
+                                <th className='font-bold text-red-600 text-xl'>Return Date</th>
+                                <th className='font-bold text-red-600 text-xl'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                books?.map(book => <tr key={book._d}>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded">
+                                                <img src={book.book.photoURL} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td className='font-bold text-lg'>{book.book.book_name}</td>
-                                <td className='font-bold text-lg'>{book.book.category}</td>
-                                <td className='font-bold text-lg'>{book.borrowed_date}</td>
-                                <td className='font-bold text-lg'>{book.return_date}</td>
-                                <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='btn btn-primary'>Return Book</button></td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                    </td>
+                                    <td className='font-bold text-lg'>{book.book.book_name}</td>
+                                    <td className='font-bold text-lg'>{book.book.category}</td>
+                                    <td className='font-bold text-lg'>{book.borrowed_date}</td>
+                                    <td className='font-bold text-lg'>{book.return_date}</td>
+                                    <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='btn btn-primary'>Return Book</button></td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>) :''
+            }
         </div>
     );
 };
