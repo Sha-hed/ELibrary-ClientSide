@@ -45,11 +45,11 @@ const Home = () => {
             </div>
             <h1 className='text-4xl font-bold text-center  my-10'>Books Categories</h1>
 
-            <div className='max-w-6xl mx-auto gap-y-5 grid grid-cols-2'>
+            {/* <div className='max-w-6xl mx-auto gap-y-5 grid grid-cols-2'>
                 {
                     category.map(cat => <CategoryCard cat={cat} key={cat._id}></CategoryCard>)
                 }
-            </div>
+            </div> */}
             {/* Popular Blog Page */}
 
             <div className='mt-20 mb-5'>
