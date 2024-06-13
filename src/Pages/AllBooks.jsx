@@ -18,7 +18,6 @@ const AllBooks = () => {
         setList(true);
     }
 
-
     const [books, setBooks] = useState([]);
     useEffect(() => {
         axios.get('https://assignment-11-server-side-red.vercel.app/books', { withCredentials: true })

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CategoryCard = ({cat}) => {
     return (
-        <div className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 shadow-2xl">
+        <div className="max-w-lg p-4 dark:bg-gray-50 dark:text-gray-800 shadow-2xl">
             <p className="p-2  text-center font-bold text-2xl my-2">{cat.category}</p>
             <div className="space-y-4">
                 <div className="space-y-2">

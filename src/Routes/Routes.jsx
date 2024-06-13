@@ -11,7 +11,6 @@ import PrivateRoute from "./PrivateRoute";
 import SpecificCategory from "../Pages/SpecificCategory";
 import BookDetails from "../Pages/BookDetails";
 import BorrowPage from "../Pages/BorrowPage";
-import Test from "../Pages/Test";
 import UpdateBooks from "../Pages/UpdateBooks";
 export const router = createBrowserRouter([
     {
@@ -56,10 +55,6 @@ export const router = createBrowserRouter([
             {
                 path: '/b',
                 element: <PrivateRoute><BorrowPage></BorrowPage></PrivateRoute>
-            },
-            {
-                path: '/test',
-                element: <Test></Test>
             },
             {
                 path: '/updateDetails/:id',

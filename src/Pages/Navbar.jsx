@@ -39,7 +39,7 @@ const Navbar = () => {
     }, [theme])
 
     return (
-        <div className="navbar bg-base-100 shadow-xl">
+        <div className="navbar bg-blue-400 shadow-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,13 +67,13 @@ const Navbar = () => {
                 {
                     user ?
                         <>
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3" title={user.displayName}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mx-3" title={user.displayName}>
                                 <div className="w-10 rounded-full">
                                     <img src={user.photoURL} />
                                 </div>
                             </div>
-                            <button onClick={handleLogOut} className='btn btn-error'>LogOut</button>
-                        </> : <Link to='/login' className="btn btn-accent">Login</Link>
+                            <button onClick={handleLogOut} className='btn btn-error mr-3'>LogOut</button>
+                        </> : <Link to='/login' className="btn btn-accent mr-2">Login</Link>
                 }
                 <label className="swap swap-rotate">
 

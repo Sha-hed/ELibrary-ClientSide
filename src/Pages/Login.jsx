@@ -7,6 +7,19 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 const Login = () => {
+    const skills = ['Yoga', 'Gym', 'Running', 'WeighLifting', 'HardLabour', 'f', 'g'];
+    // const [checkedState, setCheckedState] = useState(
+    //     new Array(skills.length).fill(false)
+    // );
+    // const handleOnChange = (position) => {
+    //     const updatedCheckedState = checkedState.map((item, index) =>
+    //         index === position ? !item : item
+    //     );
+    //     setCheckedState(updatedCheckedState);
+    //     console.log(checkedState);
+    // }
+    // console.log(checkedState);
+
     const [error, setError] = useState(null);
     const Toast = Swal.mixin({
         toast: true,
@@ -29,6 +42,7 @@ const Login = () => {
     });
 
     const onSubmit = data => {
+        // console.log('Submit Korse Vai',checkedState)
         const email = data.Email;
         const password = data.Password;
         setError('');
@@ -49,7 +63,8 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message);
-                console.log(error.messaged)})
+                console.log(error.messaged)
+            })
     }
     const googleLogin = () => {
         google()
@@ -65,7 +80,8 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message);
-                console.log(error.message)})
+                console.log(error.message)
+            })
     }
     return (
         <div className="max-w-6xl mx-auto my-10 p-2">
@@ -86,6 +102,24 @@ const Login = () => {
                             className='p-3 w-full border'
                             placeholder="Password"
                             {...register("Password", { required: true })} />
+                        {/* <div className="flex gap-5">
+                            {
+                                skills.map((skill, idx) =>
+                                    <div className="flex justify-center items-center" key={idx}>
+                                        <label>{skill}</label>
+                                        <input
+                                        type="checkbox" 
+                                        name={skill} 
+                                        id={`Custom-checkbox-${idx}`}
+                                        value={skill}
+                                        checked={checkedState[idx]}
+                                        onChange={() => handleOnChange(idx)}
+                                        />
+                                    </div>
+                                )
+                            }
+                        </div> */}
+
 
                         <input className='btn btn-info w-full' type="submit" value='Login' />
                     </form>

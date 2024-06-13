@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.5",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@mui/material": "^5.15.17",
+    "@smastrom/react-rating": "^1.5.0",
     "axios": "^1.6.8",
     "firebase": "^10.11.1",
     "localforage": "^1.10.0",
