@@ -8,3 +8,5 @@
 <p>There is a library role that allows users to modify book information and add new books.</p>
 <p>Technology Used in this project:</p>
 <p>HTML, CSS, TAILWAINDCSS, JAVASCRIPT, REACTJS, EXPRESSJS, MONGODB</p>
+<p>What to Do to Run This Project:</p>
+<p>To run this project, you need to install the necessary npm packages and add Firebase secret keys.</p>
