@@ -1,5 +1,5 @@
-1. Website Name : ELibrary
-2. Website Live URL : https://assignment-11-5ffa8.web.app/
+<p>Website Name: ELibrary</p>
+<p>Website Live URL: <a href="https://assignment-11-5ffa8.web.app/" target="_blank">https://assignment-11-5ffa8.web.app/</a></p>
 3. Selected Category : Library Management System (Assignment_ID: assignment_category_0008)
 4. Feature Of Our Website :
 5. Our website features a dynamic navigation bar at the top and a footer at the bottom, enabling users to navigate between pages seamlessly.
