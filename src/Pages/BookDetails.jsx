@@ -65,13 +65,9 @@ const BookDetails = () => {
                     <p> <span className="text-2xl font-semibold">Description</span> : {sd}</p>
                     <div className="flex justify-center items-center my-3">
                         <button disabled={quan === 0}
-                            // onClick={() => {
-                            //     handleBorrow
-                            //     setOpenPopup(true)
-                            // }}
                             onClick={() => handleBorrow(_id)}
 
-                            className="w-1/2 btn btn-success text-white text-xl font-bold">Borrow Book</button>
+                            className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2'>Borrow Book</button>
                     </div>
 
                 </div>

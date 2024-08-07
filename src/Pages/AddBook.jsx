@@ -62,7 +62,7 @@ const AddBook = () => {
                 <div className='flex gap-5 w-full'>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor="">Rating</label><br />
-                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Rating" {...register("Rating", { required: true })} />
+                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Give rating between 0 to 5" {...register("Rating", { required: true })} />
                     </div>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor=""> Quantity of the book</label><br />

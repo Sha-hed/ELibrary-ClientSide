@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import yaa from '../assets/images/Login.jpg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import { updateProfile } from 'firebase/auth';
 import auth from '../Firebase/firebase.config';
@@ -18,6 +18,8 @@ const Register = () => {
         }
     });
     const navigate = useNavigate();
+    const location = useLocation();
+    const go = location.state || '/';
     const { register, handleSubmit, formState: { errors } } = useForm({});
     const { createUser } = useAuth()
     const onSubmit = data => {
@@ -37,7 +39,7 @@ const Register = () => {
                         title: "Registered successfully"
                     });
                     setTimeout(() => {
-                        navigate('/')
+                        navigate(go)
                     }, 2500)
                 }).catch((error) => {
                     console.log('We got a error man', error)
@@ -91,17 +93,9 @@ const Register = () => {
                             placeholder="Password"
                             {...register("Password",
                                 {
-                                    required:{
-                                      value: true,
-                                      message: 'Please Provide a valid password'
-                                    },
-                                    pattern: {
-                                        value: /^(?=.*[A-Z])(?=.*[\W_]).+$/,
-                                        message: 'Passwords should include at least one uppercase letter and one special character.'
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: 'The password must be a minimum of 6 characters in length.'
+                                    required: {
+                                        value: true,
+                                        message: 'Please Provide a valid password'
                                     }
                                 })} />
                         {

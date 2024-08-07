@@ -3,11 +3,15 @@ import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useBorrow from '../Hooks/useBorrow';
+import { useNavigate } from 'react-router-dom';
 
 const BorrowedBooks = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
     const [books, setBooks] = useState(null);
+    const [isBorrow, refetch] = useBorrow();
+    const navigate = useNavigate();
 
     const url = `/borrowedBooks?email=${user?.email}`;
     // const url = `https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`;
@@ -26,6 +30,11 @@ const BorrowedBooks = () => {
                 const remaining = books.filter(b => b._id !== returnId);
                 setBooks(remaining);
                 Swal.fire("The book is returned");
+                refetch();
+                if (books.length === 1) {
+                    navigate('/allBooks')
+                }
+                console.log('Books Length koto', books.length)
                 console.log(data.data)
             })
         axios.patch(`https://assignment-11-server-side-red.vercel.app/returnQuantity/${allBookId}`)
@@ -63,12 +72,12 @@ const BorrowedBooks = () => {
                                     <td className='font-bold text-lg'>{book.book.category}</td>
                                     <td className='font-bold text-lg'>{book.borrowed_date}</td>
                                     <td className='font-bold text-lg'>{book.return_date}</td>
-                                    <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='btn btn-primary'>Return Book</button></td>
+                                    <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Return Book</button></td>
                                 </tr>)
                             }
                         </tbody>
                     </table>
-                </div>) :''
+                </div>) : ''
             }
         </div>
     );

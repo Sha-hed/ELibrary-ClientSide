@@ -5,9 +5,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useBorrow from "../Hooks/useBorrow";
 
 const Login = () => {
-    const skills = ['Yoga', 'Gym', 'Running', 'WeighLifting', 'HardLabour', 'f', 'g'];
+    // Librarian Info : {
+    //     userName : Librarian,
+    //     email : admin@gmail.com,
+    //     password: admin123
+    // }
+    // const skills = ['Yoga', 'Gym', 'Running', 'WeighLifting', 'HardLabour', 'f', 'g'];
     // const [checkedState, setCheckedState] = useState(
     //     new Array(skills.length).fill(false)
     // );
@@ -21,6 +27,7 @@ const Login = () => {
     // console.log(checkedState);
 
     const [error, setError] = useState(null);
+    const [isBorrow, refetch] = useBorrow();
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -52,6 +59,7 @@ const Login = () => {
         // console.log(user);
         login(email, password)
             .then(result => {
+                refetch();
                 Toast.fire({
                     icon: "success",
                     title: "Signed in successfully"
@@ -69,6 +77,7 @@ const Login = () => {
     const googleLogin = () => {
         google()
             .then(result => {
+                refetch();
                 Toast.fire({
                     icon: "success",
                     title: "Signed in successfully"

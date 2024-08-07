@@ -67,7 +67,9 @@ const UpdateBooks = () => {
                             <input defaultValue={rating} className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Rating" {...register("Rating", { required: true })} />
                         </div>
                     </div>
-                    <input className='btn btn-success w-full' type="submit" />
+                    <div className="flex justify-center">
+                        <input className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' type="submit" />
+                    </div>
                 </form>
             </div>
         </div>

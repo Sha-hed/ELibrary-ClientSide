@@ -39,10 +39,10 @@ const AllBooks = () => {
     return (
         <div className="max-w-6xl mx-auto my-10">
             <div className="flex justify-evenly my-5">
-                <button onClick={buttonCalled} className="btn btn-success text-xl font-semibold">Show Available Books</button>
+                <button onClick={buttonCalled} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show Available Books</button>
                 <div>
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-accent m-1 text-xl font-semibold">View By</div>
+                        <div tabIndex={0} role="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-16 py-2.5 text-center me-2 mb-2">View By</div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li onClick={handleGridClick}><a>Grid View</a></li>
                             <li onClick={handleListClick}><a>List View</a></li>

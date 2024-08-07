@@ -142,7 +142,7 @@ const Home = () => {
                                 <span className="mb-1 text-xl font-medium">Message</span>
                                 <textarea placeholder="Write Your Message" rows="4" className="p-3 outline-none block w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100"></textarea>
                             </label>
-                            <button type="button" className="outline-none self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 dark:bg-violet-600 dark:text-gray-50 focus:dark:ring-violet-600 hover:dark:ring-violet-600">Submit</button>
+                            <button type="button" className="w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Submit</button>
                         </form>
                     </div>
                 </section>

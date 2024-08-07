@@ -3,10 +3,12 @@ import useAuth from "../Hooks/useAuth";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useBorrow from '../Hooks/useBorrow';
 
 const BorrowPage = ({ openPopup, setOpenPopup, book }) => {
 
     const { user } = useAuth()
+    const [isBorrow, refetch] = useBorrow();
     const navigate = useNavigate()
     const handleBorrow = e => {
         e.preventDefault();
@@ -24,6 +26,7 @@ const BorrowPage = ({ openPopup, setOpenPopup, book }) => {
             .then(data => {
                 if (data.data.insertedId) {
                     setOpenPopup(false)
+                    refetch();
                     // Swal.fire({
                     //     title: "You Borrowed this book Successfully",
                     //     icon: "success"
@@ -72,7 +75,9 @@ const BorrowPage = ({ openPopup, setOpenPopup, book }) => {
                 <input defaultValue={user?.email} readOnly className='w-full p-2 outline-none border rounded-lg text-xl my-2' type="email" name="email" id="" /> <br />
                 <label className='font-medium text-xl' >Return Date</label> <br />
                 <input name="date" className='w-full p-2 outline-none border rounded-lg text-xl my-2' type="date" id="" />
-                <input className="btn btn-accent w-full" type="submit" value="Borrow" />
+                <div className='flex justify-center'>
+                    <input className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' type="submit" value="Borrow" />
+                </div>
             </form>
 
         </div>
