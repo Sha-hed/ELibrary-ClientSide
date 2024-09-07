@@ -40,7 +40,7 @@ const Navbar = () => {
     }, [theme])
 
     return (
-        <div className="navbar bg-gray-100 shadow-xl px-1 lg:px-32">
+        <div className="navbar bg-gray-100 px-1 lg:px-32">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

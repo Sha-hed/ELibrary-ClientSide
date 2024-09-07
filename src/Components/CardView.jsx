@@ -10,7 +10,7 @@ const CardView = ({ book }) => {
     const { _id, author_name, book_name, category, photoURL, rating } = book;
 
     return (
-        <div className="flex flex-col card w-80 bg-gray-100 border-2 ">
+        <div className="flex flex-col card w-80 bg-gray-100 border-2 mx-auto">
             <div className="flex justify-around pt-5">
                 <h1 className="uppercase font-bold underline ">{category}</h1>
                 <Rating
