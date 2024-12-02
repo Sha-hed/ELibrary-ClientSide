@@ -15,9 +15,8 @@ const AddBook = () => {
         const rating = parseInt(data.Rating);
         const quantity = parseInt(data.Quantity);
         const sd = data.sd;
-        const email = user.email;
         const bookInfo = {
-            book_name, photoURL, author_name, category, rating, quantity, sd, email
+            book_name, photoURL, author_name, category, rating, quantity, sd
         }
         axiosSecure.post('/add', bookInfo)
             .then(data => {
