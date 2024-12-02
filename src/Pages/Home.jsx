@@ -13,7 +13,7 @@ import CategoryCard from '../Components/CategoryCard';
 const Home = () => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/cat')
+        axios.get('https://assignment-11-server-side-red.vercel.app/cat')
             .then(data => setCategory(data.data));
 
     }, [])

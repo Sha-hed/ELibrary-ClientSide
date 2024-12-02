@@ -20,7 +20,7 @@ const UpdateBooks = () => {
         const bookInfo = {
             book_name, photoURL, author_name, category, rating
         }
-        axios.patch(`http://localhost:5000/UpdateBooks/${_id}`, bookInfo)
+        axios.patch(`https://assignment-11-server-side-red.vercel.app/UpdateBooks/${_id}`, bookInfo)
             .then(data => {
                 if (data.data.modifiedCount) {
                     Swal.fire({

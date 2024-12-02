@@ -14,7 +14,7 @@ const BorrowedBooks = () => {
     const navigate = useNavigate();
 
     const url = `/borrowedBooks?email=${user?.email}`;
-    // const url = `http://localhost:5000/borrowedBooks?email=${user?.email}`;
+    // const url = `https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`;
     useEffect(() => {
         axiosSecure.get(url)
             .then(data => {
@@ -25,7 +25,7 @@ const BorrowedBooks = () => {
     const handleReturn = (book) => {
         const returnId = book._id;
         const allBookId = book.book._id;
-        axios.delete(`http://localhost:5000/returnBook/${returnId}`)
+        axios.delete(`https://assignment-11-server-side-red.vercel.app/returnBook/${returnId}`)
             .then(data => {
                 const remaining = books.filter(b => b._id !== returnId);
                 setBooks(remaining);
@@ -37,7 +37,7 @@ const BorrowedBooks = () => {
                 console.log('Books Length koto', books.length)
                 console.log(data.data)
             })
-        axios.patch(`http://localhost:5000/returnQuantity/${allBookId}`)
+        axios.patch(`https://assignment-11-server-side-red.vercel.app/returnQuantity/${allBookId}`)
             .then(data => { console.log(data.data) })
     }
 

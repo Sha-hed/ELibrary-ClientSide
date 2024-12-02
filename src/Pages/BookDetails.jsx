@@ -19,7 +19,7 @@ const BookDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/borrowedBooks?email=${user?.email}`)
+        axios.get(`https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`)
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -71,10 +71,10 @@ const BookDetails = () => {
                         </h1>
                         <p> <span className="text-2xl font-semibold">Description</span> : {sd}</p>
                         <div className="flex justify-center items-center my-3">
-                        {
-                            user && user?.email === 'admin@gmail.com' ?  "":  <button onClick={() => handleBorrow(_id)} className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2'>Borrow Book</button>
-                        }
-                            
+                            {
+                                user && user?.email === 'admin@gmail.com' ? "" : <button onClick={() => handleBorrow(_id)} className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2'>Borrow Book</button>
+                            }
+
                         </div>
 
                     </div>

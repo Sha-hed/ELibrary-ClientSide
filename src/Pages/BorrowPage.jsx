@@ -22,7 +22,7 @@ const BorrowPage = ({ openPopup, setOpenPopup, book }) => {
             bor_name: name,
             bor_email: email
         }
-        axios.post('http://localhost:5000/bor', borBook)
+        axios.post('https://assignment-11-server-side-red.vercel.app/bor', borBook)
             .then(data => {
                 if (data.data.insertedId) {
                     setOpenPopup(false)
@@ -51,7 +51,7 @@ const BorrowPage = ({ openPopup, setOpenPopup, book }) => {
                         }
                     });
                 }
-                fetch('http://localhost:5000/dec', {
+                fetch('https://assignment-11-server-side-red.vercel.app/dec', {
                     method: "PATCH",
                     headers: {
                         'content-type': 'application/json'

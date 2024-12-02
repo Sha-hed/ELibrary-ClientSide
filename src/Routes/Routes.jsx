@@ -45,12 +45,12 @@ export const router = createBrowserRouter([
             {
                 path: '/specific/:category',
                 element: <SpecificCategory></SpecificCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.category}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/books/${params.category}`)
             },
             {
                 path: '/bookDetails/:id',
                 element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/singleBook/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/singleBook/${params.id}`)
             },
             {
                 path: '/b',
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             {
                 path: '/updateDetails/:id',
                 element: <PrivateRoute><UpdateBooks></UpdateBooks></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/singleBook/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-side-red.vercel.app/singleBook/${params.id}`)
             }
         ]
     },

@@ -20,7 +20,7 @@ const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/books', { withCredentials: true })
+        axios.get('https://assignment-11-server-side-red.vercel.app/books', { withCredentials: true })
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -29,7 +29,7 @@ const AllBooks = () => {
 
     const buttonCalled = () => {
         // 
-        axios.get('http://localhost:5000/quan')
+        axios.get('https://assignment-11-server-side-red.vercel.app/quan')
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)

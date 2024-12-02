@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             if (currentUser) {
-                axios.post(`http://localhost:5000/jwt`, loggedUser, { withCredentials: true })
+                axios.post(`https://assignment-11-server-side-red.vercel.app/jwt`, loggedUser, { withCredentials: true })
                     .then(data => console.log(data));
             }
         })
