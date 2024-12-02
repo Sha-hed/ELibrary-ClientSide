@@ -8,6 +8,7 @@ const Navbar = () => {
     const { user, logout } = useAuth()
     const [theme, setTheme] = useState("fantasy")
     const [isBorrow, refetch] = useBorrow();
+    const [open, setOpen] = useState(true)
     refetch();
     const links = <>
         <li className='font-semibold' ><NavLink to='/'>Home</NavLink></li>
@@ -34,6 +35,9 @@ const Navbar = () => {
             setTheme("fantasy")
         }
     }
+    const handleOff = () => {
+        setOpen(!open)
+    }
 
     useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', theme)
@@ -42,12 +46,16 @@ const Navbar = () => {
     return (
         <div className="navbar bg-gray-100 px-1 lg:px-32">
             <div className="navbar-start">
-                <div className="dropdown">
+                <div onClick={handleOff} className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className={`${open ? 'hidden' :' '} menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52`}>
                         {links}
+                        {
+                            user ? <button onClick={handleLogOut} className='mt-2 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>LogOut</button>
+                                : <Link to='/login' className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</Link>
+                        }
                     </ul>
                 </div>
                 <div className='flex'>
@@ -56,7 +64,7 @@ const Navbar = () => {
                             <img src={Logo} alt="" />
                         </div>
                     </div>
-                    <a className="btn btn-ghost text-xl ">ELibrary</a>
+                    <a className="btn btn-ghost text-xl hidden lg:flex">ELibrary</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -73,7 +81,7 @@ const Navbar = () => {
                                     <img src={user.photoURL} />
                                 </div>
                             </div>
-                            <button onClick={handleLogOut} className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>LogOut</button>
+                            <button onClick={handleLogOut} className='hidden lg:flex text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>LogOut</button>
                         </> : <Link to='/login' className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</Link>
                 }
                 <label className="swap swap-rotate">

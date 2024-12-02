@@ -13,7 +13,7 @@ import CategoryCard from '../Components/CategoryCard';
 const Home = () => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        axios.get('https://assignment-11-server-side-red.vercel.app/cat')
+        axios.get('http://localhost:5000/cat')
             .then(data => setCategory(data.data));
 
     }, [])
@@ -26,7 +26,7 @@ const Home = () => {
                     <div className="pl-2 md:pl-20 w-full md:w-1/2 text-xl font-bold text-white absolute transform left-5 right-5 top-1/3">
                         <p>A book is the only place in which you can examine a fragile thought without breaking it, or explore an explosive idea without fear it will go off in your face. It is one of the few havens remaining where a man's mind can get both provocation and privacy." - Edward P. Morgan</p>
                     </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <div className="absolute flex transform bottom-3 right-2 gap-5">
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
                     </div>
@@ -36,7 +36,7 @@ const Home = () => {
                     <div className="pl-2 md:pl-20 w-full md:w-1/2 text-xl font-bold text-white absolute transform left-5 right-5 top-1/3">
                         <p>A book is the only place in which you can examine a fragile thought without breaking it, or explore an explosive idea without fear it will go off in your face. It is one of the few havens remaining where a man's mind can get both provocation and privacy." - Edward P. Morgan</p>
                     </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <div className="absolute flex transform bottom-3 right-2 gap-5">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide3" className="btn btn-circle">❯</a>
                     </div>
@@ -46,7 +46,7 @@ const Home = () => {
                     <div className="pl-2 md:pl-20 w-full md:w-1/2 text-xl font-bold absolute transform left-5 right-5 top-1/3">
                         <p>A book is the only place in which you can examine a fragile thought without breaking it, or explore an explosive idea without fear it will go off in your face. It is one of the few havens remaining where a man's mind can get both provocation and privacy." - Edward P. Morgan</p>
                     </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <div className="absolute flex transform bottom-3 right-2 gap-5">
                         <a href="#slide2" className="btn btn-circle">❮</a>
                         <a href="#slide1" className="btn btn-circle">❯</a>
                     </div>

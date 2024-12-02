@@ -14,7 +14,7 @@ const BorrowedBooks = () => {
     const navigate = useNavigate();
 
     const url = `/borrowedBooks?email=${user?.email}`;
-    // const url = `https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`;
+    // const url = `http://localhost:5000/borrowedBooks?email=${user?.email}`;
     useEffect(() => {
         axiosSecure.get(url)
             .then(data => {
@@ -25,7 +25,7 @@ const BorrowedBooks = () => {
     const handleReturn = (book) => {
         const returnId = book._id;
         const allBookId = book.book._id;
-        axios.delete(`https://assignment-11-server-side-red.vercel.app/returnBook/${returnId}`)
+        axios.delete(`http://localhost:5000/returnBook/${returnId}`)
             .then(data => {
                 const remaining = books.filter(b => b._id !== returnId);
                 setBooks(remaining);
@@ -37,7 +37,7 @@ const BorrowedBooks = () => {
                 console.log('Books Length koto', books.length)
                 console.log(data.data)
             })
-        axios.patch(`https://assignment-11-server-side-red.vercel.app/returnQuantity/${allBookId}`)
+        axios.patch(`http://localhost:5000/returnQuantity/${allBookId}`)
             .then(data => { console.log(data.data) })
     }
 
@@ -72,7 +72,7 @@ const BorrowedBooks = () => {
                                     <td className='font-bold text-lg'>{book.book.category}</td>
                                     <td className='font-bold text-lg'>{book.borrowed_date}</td>
                                     <td className='font-bold text-lg'>{book.return_date}</td>
-                                    <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Return Book</button></td>
+                                    <td onClick={() => handleReturn(book)} className='font-bold text-lg'><button className='w-full md:w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-0 md:px-5 py-2.5 text-center mb-2'>Return Book</button></td>
                                 </tr>)
                             }
                         </tbody>

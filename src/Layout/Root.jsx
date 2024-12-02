@@ -4,23 +4,25 @@ import Footer from "../Pages/Footer";
 import { useEffect } from "react";
 
 const Root = () => {
-   
+
     const location = useLocation();
-    useEffect(()=>{
-        if(location.pathname === '/'){
-            document.title = `ELibrary | ${location.pathname.replace('/','Home')}`
-        }else if(location.state){
+    useEffect(() => {
+        if (location.pathname === '/') {
+            document.title = `ELibrary | ${location.pathname.replace('/', 'Home')}`
+        } else if (location.state) {
             document.title = `ELibrary | ${location.state}`
-        }else{
-            document.title = `ELibrary | ${location.pathname.replace('/','')}`
+        } else {
+            document.title = `ELibrary | ${location.pathname.replace('/', '')}`
         }
 
-    },[location.pathname])
+    }, [location.pathname])
 
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className="min-h-[calc(100vh-252px)]">
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

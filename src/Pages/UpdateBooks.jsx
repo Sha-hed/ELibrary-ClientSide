@@ -20,7 +20,7 @@ const UpdateBooks = () => {
         const bookInfo = {
             book_name, photoURL, author_name, category, rating
         }
-        axios.patch(`https://assignment-11-server-side-red.vercel.app/UpdateBooks/${_id}`, bookInfo)
+        axios.patch(`http://localhost:5000/UpdateBooks/${_id}`, bookInfo)
             .then(data => {
                 if (data.data.modifiedCount) {
                     Swal.fire({
@@ -33,7 +33,7 @@ const UpdateBooks = () => {
     };
     return (
         <div>
-            <div className='max-w-4xl mx-auto bg-gray-100 p-2 shadow-xl my-10 py-10 px-5'>
+            <div className='max-w-4xl mx-auto bg-gray-100 p-2 shadow-xl my-10 py-10 md:px-5'>
                 <h1 className="text-center text-green-600 font-bold text-2xl underline">Update Book Information</h1>
                 <form className='space-y-3 my-5' onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex gap-5 w-full'>
@@ -52,7 +52,7 @@ const UpdateBooks = () => {
                             <input defaultValue={author_name} className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Author Name" {...register("Author_Name", { required: true })} />
                         </div>
                         <div className='w-1/2 space-y-2'>
-                            <label className='font-medium text-xl' htmlFor="">Select Book Category</label><br />
+                            <label className='font-medium text-xl' htmlFor="">Category</label><br />
                             <select defaultValue={category} className='w-full p-2 outline-none border rounded-lg text-xl' {...register("Category", { required: true })}>
                                 <option value="History">History</option>
                                 <option value="Literature">Literature</option>

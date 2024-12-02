@@ -33,6 +33,7 @@ const AddBook = () => {
     console.log(errors)
     return (
         <div className='max-w-4xl mx-auto bg-gray-100 p-2 shadow-xl my-10 py-10 px-5'>
+            <h1 className='text-center font-bold text-3xl underline mb-10'>Add Book</h1>
             <form className='space-y-3' onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex gap-5 w-full'>
                     <div className='w-1/2 space-y-2'>
@@ -44,13 +45,13 @@ const AddBook = () => {
                         <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Enter image URL" {...register("image", { required: true })} />
                     </div>
                 </div>
-                <div className='flex gap-5 w-full'>
+                <div className='flex gap-5 w-full justify-center items-center'>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor="">Author Name</label><br />
                         <input className='w-full p-2 outline-none border rounded-lg text-xl' type="text" placeholder="Author Name" {...register("Author_Name", { required: true })} />
                     </div>
                     <div className='w-1/2 space-y-2'>
-                        <label className='font-medium text-xl' htmlFor="">Select Book Category</label><br />
+                        <label className='font-medium text-xl' htmlFor="">Category</label><br />
                         <select className='w-full p-2 outline-none border rounded-lg text-xl' {...register("Category", { required: true })}>
                             <option value="History">History</option>
                             <option value="Literature">Literature</option>
@@ -62,11 +63,11 @@ const AddBook = () => {
                 <div className='flex gap-5 w-full'>
                     <div className='w-1/2 space-y-2'>
                         <label className='font-medium text-xl' htmlFor="">Rating</label><br />
-                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Give rating between 0 to 5" {...register("Rating", { required: true })} />
+                        <input min="1" max='5' className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Give rating between 1 to 5" {...register("Rating", { required: true })} />
                     </div>
                     <div className='w-1/2 space-y-2'>
-                        <label className='font-medium text-xl' htmlFor=""> Quantity of the book</label><br />
-                        <input className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Quantity" {...register("Quantity", { required: true })} />
+                        <label className='font-medium text-xl' htmlFor=""> Quantity</label><br />
+                        <input min={1} max={5} className='w-full p-2 outline-none border rounded-lg text-xl' type="number" placeholder="Quantity" {...register("Quantity", { required: true })} />
                     </div>
                 </div>
                 <div className='w-full'>

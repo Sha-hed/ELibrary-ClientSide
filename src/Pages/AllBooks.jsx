@@ -20,7 +20,7 @@ const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
     useEffect(() => {
-        axios.get('https://assignment-11-server-side-red.vercel.app/books', { withCredentials: true })
+        axios.get('http://localhost:5000/books', { withCredentials: true })
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -29,7 +29,7 @@ const AllBooks = () => {
 
     const buttonCalled = () => {
         // 
-        axios.get('https://assignment-11-server-side-red.vercel.app/quan')
+        axios.get('http://localhost:5000/quan')
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
@@ -38,11 +38,13 @@ const AllBooks = () => {
 
     return (
         <div className="max-w-6xl mx-auto my-10">
-            <div className="flex justify-evenly my-5">
-                <button onClick={buttonCalled} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show Available Books</button>
+            <div className="flex justify-between md:justify-evenly my-5">
                 <div>
+                    <button onClick={buttonCalled} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-1 md:px-5 py-2.5 text-center mb-2">Show Available Books</button>
+                </div>
+                <div className="">
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-16 py-2.5 text-center me-2 mb-2">View By</div>
+                        <div tabIndex={0} role="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-12 md:px-16 py-2.5 text-center me-2 mb-2">View By</div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li onClick={handleGridClick}><a>Grid View</a></li>
                             <li onClick={handleListClick}><a>List View</a></li>

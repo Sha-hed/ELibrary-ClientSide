@@ -5,12 +5,13 @@ import BorrowPage from "./BorrowPage";
 import axios from "axios";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Rating } from "@smastrom/react-rating";
 const BookDetails = () => {
 
     const book = useLoaderData();
     console.log(book);
     const { user } = useAuth();
-
+    const isAdmin = user && user?.email === 'admin@gmail.com' || false
     const [books, setBooks] = useState(null);
 
     const { sd, _id, author_name, book_name, category, photoURL, quantity, rating } = book;
@@ -18,13 +19,12 @@ const BookDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`https://assignment-11-server-side-red.vercel.app/borrowedBooks?email=${user?.email}`)
+        axios.get(`http://localhost:5000/borrowedBooks?email=${user?.email}`)
             .then(data => {
                 console.log(data.data);
                 setBooks(data.data)
             })
     }, [user])
-    // console.log(books);
 
 
     const handleBorrow = (id) => {
@@ -62,13 +62,19 @@ const BookDetails = () => {
                     <div className="w-full md:w-2/3 space-y-3 px-2">
                         <h1 className="text-lg font-semibold">Author Name : {author_name}</h1>
                         <h1 className="text-lg font-semibold">Category : {category}</h1>
-                        <h1 className="text-lg font-semibold">Book Rating : {rating}</h1>
+                        <h1 className="text-lg font-semibold flex gap-2">Book Rating :
+                            <Rating
+                                style={{ maxWidth: 100 }}
+                                value={rating}
+                                readOnly
+                            />
+                        </h1>
                         <p> <span className="text-2xl font-semibold">Description</span> : {sd}</p>
                         <div className="flex justify-center items-center my-3">
-                            <button disabled={quan === 0}
-                                onClick={() => handleBorrow(_id)}
-
-                                className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2'>Borrow Book</button>
+                        {
+                            user && user?.email === 'admin@gmail.com' ?  "":  <button onClick={() => handleBorrow(_id)} className='w-1/2 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2'>Borrow Book</button>
+                        }
+                            
                         </div>
 
                     </div>
